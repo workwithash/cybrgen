@@ -11,25 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- Chosen Palette: Refined Harmony - Building on warm neutrals (bg-gray-50, bg-white, bg-gray-100) for soft backgrounds. Accentuated with a richer, deeper blue spectrum (text-blue-700, bg-blue-600, bg-blue-700, border-blue-400, from-blue-100, to-indigo-200) for stronger calls to action, prominent text, and dynamic background elements, inspired by Finera and AgileByDesign's inviting yet professional tones. Subtle dark slate (bg-slate-900) for the footer for contrast. Green (text-green-600) for success/positive indicators. The palette prioritizes clarity and a high-end, trustworthy feel. -->
-    <!-- Application Structure Plan: The SPA retains its intuitive thematic segmentation:
-    1.  **Home (Hero):** A commanding initial impression, redesigned with stronger visual emphasis on the hero text and a more fluid, organic background shape.
-    2.  **About Us:** Details Vision, Mission, and Values, explaining "Why Partner with CYBRGEN" through clear benefit cards.
-    3.  **Client Marquee:** A subtle, continuous trust-building element.
-    4.  **Testimonials:** A new section to showcase client feedback.
-    5.  **Services:** The core offering, now featuring a more visually engaging accordion structure for categories and sub-services, allowing for progressive disclosure and a cleaner initial view. Each level of detail is clearly separated visually.
-    6.  **Resources:** A content hub with refined resource cards and distinctly styled, interactive AI tools (Threat Explainer, Security Advisor) that stand out as valuable utilities.
-    7.  **Contact Us:** A clear, accessible call-to-action section.
-    This architecture promotes user-driven exploration, moving from broad overview to specific details through deliberate interaction, ensuring content is digestible and impactful. -->
-    <!-- Visualization & Content Choices:
-    - Textual Content: Typography adjusted for increased readability and visual weight where necessary. Enhanced `prose` styling for AI responses.
-    - Interactive Lists/Details: The multi-level service accordion is the primary interactive visualization, designed for clear information hierarchy. Transitions are smoothed for a more premium feel.
-    - Diagrams/Visuals: Unicode characters (emojis) remain for iconography. The hero section's `clip-path` is refined for a more organic, modern shape. Shadows and border styles are carefully chosen for depth and sophistication.
-    - AI Integration: The AI tool cards feature more pronounced shadows and subtle background differentiation to highlight their interactive nature.
-    - Dynamic Elements: Retained marquee for client logos, enhanced fade-in on scroll (Intersection Observer), and improved modal transitions for resource pop-ups. The hamburger menu now includes smooth animations for both the icon and the sliding menu panel.
-    - Libraries: Exclusively Tailwind CSS (CDN) for styling and vanilla JavaScript for all interactive logic and API communication.
-    - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. No Chart.js/Plotly.js utilized as the content primarily consists of textual descriptions and hierarchical service details, which are best presented through structured text and interactive accordions rather than data charts. The design emphasizes information architecture and content exploration over numerical data visualization. -->
-
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -424,13 +405,15 @@
 
     <header id="header" class="bg-white/95 backdrop-blur-lg sticky top-0 z-50 shadow-md header-visible">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="text-2xl font-extrabold text-slate-900">
-                CYBR<span class="text-blue-700">GEN</span>
+            <a href="#home" class="w-12">
+                <img src="./src/LOGO.png" alt="">
             </a>
             <div class="hidden md:flex space-x-8">
                 <!-- MODIFIED NAV LINKS FOR NEW HOVER EFFECT -->
                 <a href="#about" class="nav-link text-slate-700 transition-colors duration-300 font-medium"
                     data-section="about">About Us</a>
+                <a href="#testimonials" class="nav-link text-slate-700 transition-colors duration-300 font-medium"
+                    data-section="testimonials">Testimonials</a>
                 <a href="#services" class="nav-link text-slate-700 transition-colors duration-300 font-medium"
                     data-section="services">Services</a>
                 <a href="#resources" class="nav-link text-slate-700 transition-colors duration-300 font-medium"
@@ -454,70 +437,77 @@
         <div id="mobile-menu">
             <a href="#about" class="block py-3 px-6 text-base text-slate-700 hover:bg-blue-50 border-b border-slate-100"
                 data-section="about" style="--item-delay: 0.05s;">About Us</a>
+            <a href="#testimonials"
+                class="block py-3 px-6 text-base text-slate-700 hover:bg-blue-50 border-b border-slate-100"
+                data-section="testimonials" style="--item-delay: 0.10s;">Testimonials</a>
             <a href="#services"
                 class="block py-3 px-6 text-base text-slate-700 hover:bg-blue-50 border-b border-slate-100"
-                data-section="services" style="--item-delay: 0.10s;">Services</a>
+                data-section="services" style="--item-delay: 0.15s;">Services</a>
             <a href="#resources"
                 class="block py-3 px-6 text-base text-slate-700 hover:bg-blue-50 border-b border-slate-100"
-                data-section="resources" style="--item-delay: 0.15s;">Resources</a>
+                data-section="resources" style="--item-delay: 0.20s;">Resources</a>
             <a href="#advisor"
                 class="block py-3 px-6 text-base text-slate-700 hover:bg-blue-50 border-b border-slate-100"
-                data-section="advisor" style="--item-delay: 0.20s;">Advisor</a>
+                data-section="advisor" style="--item-delay: 0.25s;">Advisor</a>
             <a href="#contact"
                 class="block py-3 px-6 text-base text-slate-700 hover:bg-blue-50 border-b border-slate-100 last:border-b-0"
-                data-section="contact" style="--item-delay: 0.25s;">Contact Us</a>
+                data-section="contact" style="--item-delay: 0.30s;">Contact Us</a>
         </div>
     </header>
 
     <main>
-        <section id="home" class="relative min-h-[calc(100vh-80px)] flex items-center bg-white overflow-hidden">
+        <section id="home"
+            class="relative min-h-[calc(100vh-80px)] flex items-center bg-white overflow-hidden py-20 sm:py-28">
             <div class="absolute inset-0 bg-gradient-to-br from-blue-100 to-indigo-200"
                 style="clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);"></div>
             <div class="container mx-auto px-6 text-center relative z-10 animate-fade-in">
                 <h1
-                    class="text-5xl md:text-7xl font-extrabold text-slate-900 leading-tight md:leading-snug drop-shadow-sm mb-6">
+                    class="text-4xl sm:text-5xl md:text-7xl font-extrabold text-slate-900 leading-tight md:leading-snug drop-shadow-sm mb-6">
                     Innovate Securely.<br class="hidden md:block"> Build <span class="text-blue-700">Digital
                         Resilience.</span>
                 </h1>
-                <p class="mt-6 text-lg md:text-xl text-slate-700 max-w-4xl mx-auto opacity-90">
+                <p class="mt-6 text-lg sm:text-xl text-slate-700 max-w-4xl mx-auto opacity-90">
                     Comprehensive, intelligent cybersecurity solutions tailored to empower your organization, navigate
                     regulatory landscapes with confidence, and foster secure growth.
                 </p>
                 <div class="mt-12 flex flex-col sm:flex-row justify-center gap-5">
                     <a href="#services"
-                        class="bg-blue-700 text-white px-10 py-4 rounded-full font-semibold text-lg shadow-xl hover:bg-blue-800 transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300">Explore
+                        class="bg-blue-700 text-white px-8 py-3.5 sm:px-10 sm:py-4 rounded-full font-semibold text-lg shadow-xl hover:bg-blue-800 transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300">Explore
                         Our Services</a>
                     <a href="#contact"
-                        class="bg-white text-blue-700 border-2 border-blue-400 px-10 py-4 rounded-full font-semibold text-lg shadow-md hover:bg-blue-50 transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300">Request
+                        class="bg-white text-blue-700 border-2 border-blue-400 px-8 py-3.5 sm:px-10 sm:py-4 rounded-full font-semibold text-lg shadow-md hover:bg-blue-50 transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300">Request
                         a Consultation</a>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="py-28 bg-white opacity-0">
+        <section id="about" class="py-20 sm:py-28 bg-white opacity-0">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-20">
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-800 section-title inline-block">About CYBRGEN
-                    </h2>
-                    <p class="text-slate-600 mt-6 max-w-3xl mx-auto text-xl">We are your dedicated partners in cyber
-                        resilience, committed to embedding security into the core of your operations.</p>
+                <div class="text-center mb-16 sm:mb-20">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 section-title inline-block">
+                        About CYBRGEN</h2>
+                    <p class="text-lg sm:text-xl text-slate-600 mt-4 sm:mt-6 max-w-3xl mx-auto">We are your dedicated
+                        partners in cyber resilience, committed to embedding security into the core of your operations.
+                    </p>
                 </div>
-                <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="grid md:grid-cols-2 gap-10 sm:gap-16 items-center">
                     <div class="animate-fade-in" style="--animation-delay: 0.1s;">
-                        <h3 class="text-3xl font-semibold text-slate-800 mb-8">Our Vision, Mission & Values</h3>
-                        <div class="space-y-6 text-slate-700 leading-relaxed mb-8">
-                            <p class="text-lg"><strong>Vision:</strong> To be the APAC region's most trusted and
-                                sought-after cybersecurity authority, empowering organizations to innovate securely,
-                                navigate complex regulatory landscapes with confidence, and build enduring digital
-                                resilience.</p>
-                            <p class="text-lg"><strong>Mission:</strong> Our mission is to provide comprehensive and
-                                specialized cybersecurity solutions, from offensive security and GRC services to managed
-                                detection and response and vendor risk management. We focus on delivering measurable
-                                security outcomes, fostering a strong security culture, and enabling our clients across
-                                the APAC region to meet their strategic objectives with cyber resilience and regulatory
-                                assurance.</p>
-                            <p class="text-lg font-semibold text-slate-800">Our core values guide every interaction:</p>
-                            <ul class="list-disc list-inside space-y-2 text-slate-700 text-base ml-4">
+                        <h3 class="text-2xl sm:text-3xl font-semibold text-slate-800 mb-6 sm:mb-8">Our Vision, Mission &
+                            Values</h3>
+                        <div class="space-y-5 sm:space-y-6 text-slate-700 leading-relaxed mb-6 sm:mb-8">
+                            <p class="text-base sm:text-lg"><strong>Vision:</strong> To be the APAC region's most
+                                trusted and sought-after cybersecurity authority, empowering organizations to innovate
+                                securely, navigate complex regulatory landscapes with confidence, and build enduring
+                                digital resilience.</p>
+                            <p class="text-base sm:text-lg"><strong>Mission:</strong> Our mission is to provide
+                                comprehensive and specialized cybersecurity solutions, from offensive security and GRC
+                                services to managed detection and response and vendor risk management. We focus on
+                                delivering measurable security outcomes, fostering a strong security culture, and
+                                enabling our clients across the APAC region to meet their strategic objectives with
+                                cyber resilience and regulatory assurance.</p>
+                            <p class="text-base sm:text-lg font-semibold text-slate-800">Our core values guide every
+                                interaction:</p>
+                            <ul class="list-disc list-inside space-y-2 text-slate-700 text-sm sm:text-base ml-4">
                                 <li><strong>Excellence:</strong> Delivering high-quality, effective, and tailored
                                     solutions leveraging decades of Big 4 expertise.</li>
                                 <li><strong>Empowerment:</strong> Supporting our clients to achieve their security and
@@ -531,16 +521,18 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="relative p-10 bg-blue-50 rounded-2xl shadow-xl overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:scale-[1.01] animate-fade-in"
+                    <div class="relative p-8 sm:p-10 bg-blue-50 rounded-2xl shadow-xl overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:scale-[1.01] animate-fade-in"
                         style="--animation-delay: 0.2s;">
                         <div class="absolute inset-0 bg-gradient-to-tr from-blue-100 to-indigo-100 opacity-60"></div>
                         <div class="relative z-10 text-center">
-                            <div class="text-8xl mb-8 transform rotate-6 inline-block opacity-70">🔒</div>
-                            <h3 class="text-4xl font-extrabold text-blue-800 mb-6">Your Security. Our Priority.</h3>
-                            <p class="text-blue-700 text-xl mb-8">Partner with local experts who understand the unique
-                                cybersecurity landscape of New Zealand and the APAC region.</p>
+                            <div class="text-7xl sm:text-8xl mb-6 sm:mb-8 transform rotate-6 inline-block opacity-70">🔒
+                            </div>
+                            <h3 class="text-3xl sm:text-4xl font-extrabold text-blue-800 mb-4 sm:mb-6">Your Security.
+                                Our Priority.</h3>
+                            <p class="text-lg sm:text-xl text-blue-700 mb-6 sm:mb-8">Partner with local experts who
+                                understand the unique cybersecurity landscape of New Zealand and the APAC region.</p>
                             <a href="#contact"
-                                class="bg-blue-700 text-white px-10 py-4 rounded-full font-semibold text-lg shadow-xl hover:bg-blue-800 transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300">Start
+                                class="bg-blue-700 text-white px-8 py-3.5 sm:px-10 sm:py-4 rounded-full font-semibold text-lg shadow-xl hover:bg-blue-800 transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300">Start
                                 Securing Today</a>
                         </div>
                     </div>
@@ -548,137 +540,138 @@
             </div>
         </section>
 
-        <section id="clientMarquee" class="py-16 bg-gray-50 border-y border-gray-200 overflow-hidden opacity-0">
-            <div class="text-center mb-12">
-                <h3 class="text-3xl font-semibold text-slate-800">Trusted By Leading Organizations</h3>
+        <section id="clientMarquee"
+            class="py-12 sm:py-16 bg-gray-50 border-y border-gray-200 overflow-hidden opacity-0">
+            <div class="text-center mb-10 sm:mb-12">
+                <h3 class="text-2xl sm:text-3xl font-semibold text-slate-800">Trusted By Leading Organizations</h3>
             </div>
             <div class="relative w-full overflow-hidden whitespace-nowrap">
                 <div class="inline-block marquee">
                     <span
-                        class="inline-flex items-center mx-10 py-3 px-6 bg-white rounded-xl shadow-lg text-slate-700 text-xl font-medium border border-gray-100">🏢
+                        class="inline-flex items-center mx-6 sm:mx-10 py-2.5 px-5 bg-white rounded-xl shadow-lg text-slate-700 text-base sm:text-xl font-medium border border-gray-100">🏢
                         Enterprise Inc.</span>
                     <span
-                        class="inline-flex items-center mx-10 py-3 px-6 bg-white rounded-xl shadow-lg text-slate-700 text-xl font-medium border border-gray-100">🏦
+                        class="inline-flex items-center mx-6 sm:mx-10 py-2.5 px-5 bg-white rounded-xl shadow-lg text-slate-700 text-base sm:text-xl font-medium border border-gray-100">🏦
                         Global Bank</span>
                     <span
-                        class="inline-flex items-center mx-10 py-3 px-6 bg-white rounded-xl shadow-lg text-slate-700 text-xl font-medium border border-gray-100">🛍️
+                        class="inline-flex items-center mx-6 sm:mx-10 py-2.5 px-5 bg-white rounded-xl shadow-lg text-slate-700 text-base sm:text-xl font-medium border border-gray-100">🛍️
                         Retail Chain</span>
                     <span
-                        class="inline-flex items-center mx-10 py-3 px-6 bg-white rounded-xl shadow-lg text-slate-700 text-xl font-medium border border-gray-100">💡
+                        class="inline-flex items-center mx-6 sm:mx-10 py-2.5 px-5 bg-white rounded-xl shadow-lg text-slate-700 text-base sm:text-xl font-medium border border-gray-100">💡
                         Tech Solutions</span>
                     <span
-                        class="inline-flex items-center mx-10 py-3 px-6 bg-white rounded-xl shadow-lg text-slate-700 text-xl font-medium border border-gray-100">🏥
+                        class="inline-flex items-center mx-6 sm:mx-10 py-2.5 px-5 bg-white rounded-xl shadow-lg text-slate-700 text-base sm:text-xl font-medium border border-gray-100">🏥
                         HealthCorp</span>
                     <span
-                        class="inline-flex items-center mx-10 py-3 px-6 bg-white rounded-xl shadow-lg text-slate-700 text-xl font-medium border border-gray-100">🚛
+                        class="inline-flex items-center mx-6 sm:mx-10 py-2.5 px-5 bg-white rounded-xl shadow-lg text-slate-700 text-base sm:text-xl font-medium border border-gray-100">🚛
                         Logistics Co.</span>
                     <span
-                        class="inline-flex items-center mx-10 py-3 px-6 bg-white rounded-xl shadow-lg text-slate-700 text-xl font-medium border border-gray-100">⚡
+                        class="inline-flex items-center mx-6 sm:mx-10 py-2.5 px-5 bg-white rounded-xl shadow-lg text-slate-700 text-base sm:text-xl font-medium border border-gray-100">⚡
                         Energy Grid</span>
                     <span
-                        class="inline-flex items-center mx-10 py-3 px-6 bg-white rounded-xl shadow-lg text-slate-700 text-xl font-medium border border-gray-100">🔬
+                        class="inline-flex items-center mx-6 sm:mx-10 py-2.5 px-5 bg-white rounded-xl shadow-lg text-slate-700 text-base sm:text-xl font-medium border border-gray-100">🔬
                         Research Lab</span>
                     <span
-                        class="inline-flex items-center mx-10 py-3 px-6 bg-white rounded-xl shadow-lg text-slate-700 text-xl font-medium border border-gray-100">🎓
+                        class="inline-flex items-center mx-6 sm:mx-10 py-2.5 px-5 bg-white rounded-xl shadow-lg text-slate-700 text-base sm:text-xl font-medium border border-gray-100">🎓
                         EduTech</span>
                     <span
-                        class="inline-flex items-center mx-10 py-3 px-6 bg-white rounded-xl shadow-lg text-slate-700 text-xl font-medium border border-gray-100">🏛️
+                        class="inline-flex items-center mx-6 sm:mx-10 py-2.5 px-5 bg-white rounded-xl shadow-lg text-slate-700 text-base sm:text-xl font-medium border border-gray-100">🏛️
                         Government Agency</span>
                     <!-- Duplicated for continuous scroll -->
                     <span
-                        class="inline-flex items-center mx-10 py-3 px-6 bg-white rounded-xl shadow-lg text-slate-700 text-xl font-medium border border-gray-100">🏢
+                        class="inline-flex items-center mx-6 sm:mx-10 py-2.5 px-5 bg-white rounded-xl shadow-lg text-slate-700 text-base sm:text-xl font-medium border border-gray-100">🏢
                         Enterprise Inc.</span>
                     <span
-                        class="inline-flex items-center mx-10 py-3 px-6 bg-white rounded-xl shadow-lg text-slate-700 text-xl font-medium border border-gray-100">🏦
+                        class="inline-flex items-center mx-6 sm:mx-10 py-2.5 px-5 bg-white rounded-xl shadow-lg text-slate-700 text-base sm:text-xl font-medium border border-gray-100">🏦
                         Global Bank</span>
                     <span
-                        class="inline-flex items-center mx-10 py-3 px-6 bg-white rounded-xl shadow-lg text-slate-700 text-xl font-medium border border-gray-100">🛍️
+                        class="inline-flex items-center mx-6 sm:mx-10 py-2.5 px-5 bg-white rounded-xl shadow-lg text-slate-700 text-base sm:text-xl font-medium border border-gray-100">🛍️
                         Retail Chain</span>
                     <span
-                        class="inline-flex items-center mx-10 py-3 px-6 bg-white rounded-xl shadow-lg text-slate-700 text-xl font-medium border border-gray-100">💡
+                        class="inline-flex items-center mx-6 sm:mx-10 py-2.5 px-5 bg-white rounded-xl shadow-lg text-slate-700 text-base sm:text-xl font-medium border border-gray-100">💡
                         Tech Solutions</span>
                     <span
-                        class="inline-flex items-center mx-10 py-3 px-6 bg-white rounded-xl shadow-lg text-slate-700 text-xl font-medium border border-gray-100">🏥
+                        class="inline-flex items-center mx-6 sm:mx-10 py-2.5 px-5 bg-white rounded-xl shadow-lg text-slate-700 text-base sm:text-xl font-medium border border-gray-100">🏥
                         HealthCorp</span>
                     <span
-                        class="inline-flex items-center mx-10 py-3 px-6 bg-white rounded-xl shadow-lg text-slate-700 text-xl font-medium border border-gray-100">🚛
+                        class="inline-flex items-center mx-6 sm:mx-10 py-2.5 px-5 bg-white rounded-xl shadow-lg text-slate-700 text-base sm:text-xl font-medium border border-gray-100">🚛
                         Logistics Co.</span>
                     <span
-                        class="inline-flex items-center mx-10 py-3 px-6 bg-white rounded-xl shadow-lg text-slate-700 text-xl font-medium border border-gray-100">⚡
+                        class="inline-flex items-center mx-6 sm:mx-10 py-2.5 px-5 bg-white rounded-xl shadow-lg text-slate-700 text-base sm:text-xl font-medium border border-gray-100">⚡
                         Energy Grid</span>
                     <span
-                        class="inline-flex items-center mx-10 py-3 px-6 bg-white rounded-xl shadow-lg text-slate-700 text-xl font-medium border border-gray-100">🔬
+                        class="inline-flex items-center mx-6 sm:mx-10 py-2.5 px-5 bg-white rounded-xl shadow-lg text-slate-700 text-base sm:text-xl font-medium border border-gray-100">🔬
                         Research Lab</span>
                     <span
-                        class="inline-flex items-center mx-10 py-3 px-6 bg-white rounded-xl shadow-lg text-slate-700 text-xl font-medium border border-gray-100">🎓
+                        class="inline-flex items-center mx-6 sm:mx-10 py-2.5 px-5 bg-white rounded-xl shadow-lg text-slate-700 text-base sm:text-xl font-medium border border-gray-100">🎓
                         EduTech</span>
                     <span
-                        class="inline-flex items-center mx-10 py-3 px-6 bg-white rounded-xl shadow-lg text-slate-700 text-xl font-medium border border-gray-100">🏛️
+                        class="inline-flex items-center mx-6 sm:mx-10 py-2.5 px-5 bg-white rounded-xl shadow-lg text-slate-700 text-base sm:text-xl font-medium border border-gray-100">🏛️
                         Government Agency</span>
                 </div>
             </div>
         </section>
 
         <!-- NEW TESTIMONIALS SECTION -->
-        <section id="testimonials" class="py-28 bg-white opacity-0">
+        <section id="testimonials" class="py-20 sm:py-28 bg-white opacity-0">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-20">
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-800 section-title inline-block">What Our
-                        Clients Say</h2>
-                    <p class="text-slate-600 mt-6 max-w-3xl mx-auto text-xl">Hear directly from the organizations we've
-                        helped secure and empower.</p>
+                <div class="text-center mb-16 sm:mb-20">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 section-title inline-block">
+                        What Our Clients Say</h2>
+                    <p class="text-lg sm:text-xl text-slate-600 mt-4 sm:mt-6 max-w-3xl mx-auto">Hear directly from the
+                        organizations we've helped secure and empower.</p>
                 </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
                     <!-- Testimonial Card 1 -->
                     <div
-                        class="bg-blue-50 p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
-                        <p class="text-lg text-blue-800 leading-relaxed italic mb-6">
+                        class="bg-blue-50 p-6 sm:p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
+                        <p class="text-base sm:text-lg text-blue-800 leading-relaxed italic mb-5 sm:mb-6">
                             "CYBRGEN's expertise in cloud security was invaluable. They not only identified critical
                             vulnerabilities but provided actionable strategies that significantly hardened our
                             infrastructure. Their team is professional and truly committed to our success."
                         </p>
                         <div class="flex items-center">
-                            <img src="https://placehold.co/60x60/ADD8E6/000000?text=JD" alt="Client Avatar"
-                                class="w-14 h-14 rounded-full mr-4 border-2 border-blue-200 shadow-md">
+                            <img src="https://placehold.co/50x50/ADD8E6/000000?text=JD" alt="Client Avatar"
+                                class="w-12 h-12 sm:w-14 sm:h-14 rounded-full mr-3 sm:mr-4 border-2 border-blue-200 shadow-md">
                             <div>
-                                <p class="font-bold text-slate-800 text-lg">Jane Doe</p>
-                                <p class="text-blue-700 text-sm">CTO, TechInnovate Ltd.</p>
+                                <p class="font-bold text-slate-800 text-base sm:text-lg">Jane Doe</p>
+                                <p class="text-blue-700 text-xs sm:text-sm">CTO, TechInnovate Ltd.</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Testimonial Card 2 -->
                     <div
-                        class="bg-blue-50 p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
-                        <p class="text-lg text-blue-800 leading-relaxed italic mb-6">
+                        class="bg-blue-50 p-6 sm:p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
+                        <p class="text-base sm:text-lg text-blue-800 leading-relaxed italic mb-5 sm:mb-6">
                             "The phishing awareness training provided by CYBRGEN was incredibly engaging and effective.
                             Our employees are now much more vigilant, and we've seen a measurable reduction in
                             suspicious click rates. A fantastic investment!"
                         </p>
                         <div class="flex items-center">
-                            <img src="https://placehold.co/60x60/ADD8E6/000000?text=AM" alt="Client Avatar"
-                                class="w-14 h-14 rounded-full mr-4 border-2 border-blue-200 shadow-md">
+                            <img src="https://placehold.co/50x50/ADD8E6/000000?text=AM" alt="Client Avatar"
+                                class="w-12 h-12 sm:w-14 sm:h-14 rounded-full mr-3 sm:mr-4 border-2 border-blue-200 shadow-md">
                             <div>
-                                <p class="font-bold text-slate-800 text-lg">Alex Miller</p>
-                                <p class="text-blue-700 text-sm">HR Director, GlobalCorp</p>
+                                <p class="font-bold text-slate-800 text-base sm:text-lg">Alex Miller</p>
+                                <p class="text-blue-700 text-xs sm:text-sm">HR Director, GlobalCorp</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Testimonial Card 3 -->
                     <div
-                        class="bg-blue-50 p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
-                        <p class="text-lg text-blue-800 leading-relaxed italic mb-6">
+                        class="bg-blue-50 p-6 sm:p-8 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
+                        <p class="text-base sm:text-lg text-blue-800 leading-relaxed italic mb-5 sm:mb-6">
                             "As a small business, navigating cybersecurity compliance was daunting. CYBRGEN simplified
                             the entire process for us, helping us understand and meet our regulatory obligations without
                             overwhelming our resources. Highly recommend!"
                         </p>
                         <div class="flex items-center">
-                            <img src="https://placehold.co/60x60/ADD8E6/000000?text=SP" alt="Client Avatar"
-                                class="w-14 h-14 rounded-full mr-4 border-2 border-blue-200 shadow-md">
+                            <img src="https://placehold.co/50x50/ADD8E6/000000?text=SP" alt="Client Avatar"
+                                class="w-12 h-12 sm:w-14 sm:h-14 rounded-full mr-3 sm:mr-4 border-2 border-blue-200 shadow-md">
                             <div>
-                                <p class="font-bold text-slate-800 text-lg">Sarah Patel</p>
-                                <p class="text-blue-700 text-sm">CEO, Local Retail Co.</p>
+                                <p class="font-bold text-slate-800 text-base sm:text-lg">Sarah Patel</p>
+                                <p class="text-blue-700 text-xs sm:text-sm">CEO, Local Retail Co.</p>
                             </div>
                         </div>
                     </div>
@@ -686,83 +679,86 @@
             </div>
         </section>
 
-        <section id="services" class="py-28 bg-gray-50 opacity-0">
+        <section id="services" class="py-20 sm:py-28 bg-gray-50 opacity-0">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-20">
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-800 section-title inline-block">Our
+                <div class="text-center mb-16 sm:mb-20">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 section-title inline-block">Our
                         Comprehensive Services</h2>
-                    <p class="text-slate-600 mt-6 max-w-3xl mx-auto text-xl">A complete suite of services to cover every
-                        aspect of your organization's security posture. Explore our categories to find the right
-                        solution for your needs.</p>
+                    <p class="text-lg sm:text-xl text-slate-600 mt-4 sm:mt-6 max-w-3xl mx-auto">A complete suite of
+                        services to cover every aspect of your organization's security posture. Explore our categories
+                        to find the right solution for your needs.</p>
                 </div>
-                <div id="services-categories-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div id="services-categories-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
                     <!-- Service categories populated by JavaScript -->
                 </div>
             </div>
         </section>
 
-        <section id="resources" class="py-28 bg-white opacity-0">
+        <section id="resources" class="py-20 sm:py-28 bg-white opacity-0">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-20">
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-800 section-title inline-block">Insights &
-                        Resources</h2>
-                    <p class="text-slate-600 mt-6 max-w-3xl mx-auto text-xl">Stay informed with our expert analysis,
-                        case studies, and guides on the evolving threat landscape. Learn from our thought leadership to
-                        bolster your own security knowledge.</p>
+                <div class="text-center mb-16 sm:mb-20">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 section-title inline-block">
+                        Insights & Resources</h2>
+                    <p class="text-lg sm:text-xl text-slate-600 mt-4 sm:mt-6 max-w-3xl mx-auto">Stay informed with our
+                        expert analysis, case studies, and guides on the evolving threat landscape. Learn from our
+                        thought leadership to bolster your own security knowledge.</p>
                 </div>
-                <div id="resources-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div id="resources-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
                     <!-- Resource cards populated by JavaScript -->
                 </div>
 
                 <div
-                    class="mt-28 max-w-4xl mx-auto bg-blue-50 p-10 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl">
-                    <h3 class="text-3xl font-bold text-blue-800 mb-8">✨ AI-Powered Threat Explainer ✨</h3>
-                    <p class="text-blue-700 mb-6 text-lg">Enter any cybersecurity term or concept, and our AI will
-                        provide a concise, easy-to-understand explanation.</p>
-                    <div class="flex flex-col sm:flex-row gap-5 mb-8">
+                    class="mt-20 sm:mt-28 max-w-4xl mx-auto bg-blue-50 p-6 sm:p-10 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-blue-800 mb-6 sm:mb-8">✨ AI-Powered Threat Explainer
+                        ✨</h3>
+                    <p class="text-base sm:text-lg text-blue-700 mb-4 sm:mb-6">Enter any cybersecurity term or concept,
+                        and our AI will provide a concise, easy-to-understand explanation.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 sm:gap-5 mb-6 sm:mb-8">
                         <input type="text" id="threat-input" placeholder="e.g., 'Ransomware' or 'Zero Trust'"
-                            class="flex-grow border border-blue-300 rounded-lg shadow-sm py-3 px-4 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 placeholder-slate-400" />
+                            class="flex-grow border border-blue-300 rounded-lg shadow-sm py-2.5 px-3.5 text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 placeholder-slate-400" />
                         <button id="explain-threat-button"
-                            class="bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-blue-800 transition-all duration-300 flex-shrink-0 shadow-md hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                            class="bg-blue-700 text-white px-6 py-2.5 sm:px-8 sm:py-3 rounded-lg font-semibold text-base sm:text-lg hover:bg-blue-800 transition-all duration-300 flex-shrink-0 shadow-md hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300">
                             Explain Threat
                         </button>
                     </div>
-                    <div id="threat-loading" class="text-blue-700 text-center py-6 text-lg hidden">
+                    <div id="threat-loading" class="text-blue-700 text-center py-4 sm:py-6 text-base sm:text-lg hidden">
                         Loading explanation...
                     </div>
                     <div id="threat-result"
-                        class="bg-white p-6 rounded-lg border border-blue-100 text-slate-700 prose max-w-none shadow-inner hidden">
+                        class="bg-white p-5 sm:p-6 rounded-lg border border-blue-100 text-slate-700 prose max-w-none shadow-inner hidden">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="advisor" class="py-28 bg-gray-100 opacity-0">
+        <section id="advisor" class="py-20 sm:py-28 bg-gray-100 opacity-0">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-20">
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-800 section-title inline-block">✨ Quick
-                        Security Advisor ✨</h2>
-                    <p class="text-slate-600 mt-6 max-w-3xl mx-auto text-xl">Get personalized, AI-driven cybersecurity
-                        recommendations tailored to your business profile and concerns.</p>
+                <div class="text-center mb-16 sm:mb-20">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 section-title inline-block">✨
+                        Quick Security Advisor ✨</h2>
+                    <p class="text-lg sm:text-xl text-slate-600 mt-4 sm:mt-6 max-w-3xl mx-auto">Get personalized,
+                        AI-driven cybersecurity recommendations tailored to your business profile and concerns.</p>
                 </div>
                 <div
-                    class="max-w-4xl mx-auto bg-white p-10 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-xl">
-                    <div class="grid sm:grid-cols-2 gap-8 mb-8">
+                    class="max-w-4xl mx-auto bg-white p-6 sm:p-10 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-xl">
+                    <div class="grid sm:grid-cols-2 gap-6 sm:gap-8 mb-6 sm:mb-8">
                         <div>
-                            <label for="company-size" class="block text-base font-medium text-slate-700 mb-2">Company
+                            <label for="company-size"
+                                class="block text-sm sm:text-base font-medium text-slate-700 mb-1 sm:mb-2">Company
                                 Size</label>
                             <select id="company-size"
-                                class="block w-full border border-slate-300 rounded-lg shadow-sm py-3 px-4 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200">
+                                class="block w-full border border-slate-300 rounded-lg shadow-sm py-2.5 px-3.5 text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200">
                                 <option value="small">Small (1-50 employees)</option>
                                 <option value="medium">Medium (51-500 employees)</option>
                                 <option value="large">Large (500+ employees)</option>
                             </select>
                         </div>
                         <div>
-                            <label for="industry" class="block text-base font-medium text-slate-700 mb-2">Industry
+                            <label for="industry"
+                                class="block text-sm sm:text-base font-medium text-slate-700 mb-1 sm:mb-2">Industry
                                 Type</label>
                             <select id="industry"
-                                class="block w-full border border-slate-300 rounded-lg shadow-sm py-3 px-4 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200">
+                                class="block w-full border border-slate-300 rounded-lg shadow-sm py-2.5 px-3.5 text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200">
                                 <option value="e-commerce">E-commerce</option>
                                 <option value="finance">Finance</option>
                                 <option value="healthcare">Healthcare</option>
@@ -771,10 +767,11 @@
                             </select>
                         </div>
                         <div class="sm:col-span-2">
-                            <label for="top-concern" class="block text-base font-medium text-slate-700 mb-2">Top
-                                Security Concern</label>
+                            <label for="top-concern"
+                                class="block text-sm sm:text-base font-medium text-slate-700 mb-1 sm:mb-2">Top Security
+                                Concern</label>
                             <select id="top-concern"
-                                class="block w-full border border-slate-300 rounded-lg shadow-sm py-3 px-4 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200">
+                                class="block w-full border border-slate-300 rounded-lg shadow-sm py-2.5 px-3.5 text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200">
                                 <option value="phishing">Phishing/Email Attacks</option>
                                 <option value="data-breaches">Data Breaches</option>
                                 <option value="ransomware">Ransomware</option>
@@ -784,84 +781,88 @@
                         </div>
                     </div>
                     <button id="generate-recommendations-button"
-                        class="w-full bg-blue-700 text-white py-3.5 px-8 rounded-lg font-semibold text-lg hover:bg-blue-800 transition-all duration-300 shadow-md hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                        class="w-full bg-blue-700 text-white py-3 sm:py-3.5 px-6 sm:px-8 rounded-lg font-semibold text-base sm:text-lg hover:bg-blue-800 transition-all duration-300 shadow-md hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300">
                         Generate Recommendations
                     </button>
-                    <div id="advisor-loading" class="text-blue-700 text-center py-6 text-lg hidden">
+                    <div id="advisor-loading"
+                        class="text-blue-700 text-center py-4 sm:py-6 text-base sm:text-lg hidden">
                         Generating recommendations...
                     </div>
                     <div id="advisor-result"
-                        class="bg-gray-50 p-6 rounded-lg border border-slate-200 text-slate-700 prose max-w-none mt-8 shadow-inner hidden">
+                        class="bg-gray-50 p-5 sm:p-6 rounded-lg border border-slate-200 text-slate-700 prose max-w-none mt-6 sm:mt-8 shadow-inner hidden">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="py-28 bg-gray-50 opacity-0">
+        <section id="contact" class="py-20 sm:py-28 bg-gray-50 opacity-0">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-20">
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-800 section-title inline-block">Get in Touch
-                    </h2>
-                    <p class="text-slate-600 mt-6 max-w-3xl mx-auto text-xl">Ready to strengthen your security? Let's
-                        talk about your challenges and how we can help.</p>
+                <div class="text-center mb-16 sm:mb-20">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 section-title inline-block">Get
+                        in Touch</h2>
+                    <p class="text-lg sm:text-xl text-slate-600 mt-4 sm:mt-6 max-w-3xl mx-auto">Ready to strengthen your
+                        security? Let's talk about your challenges and how we can help.</p>
                 </div>
                 <div
-                    class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 bg-white p-10 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-xl">
+                    class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 sm:gap-12 bg-white p-6 sm:p-10 rounded-2xl shadow-xl transition-all duration-300 hover:shadow-xl">
                     <form onsubmit="event.preventDefault()">
-                        <div class="space-y-7">
+                        <div class="space-y-6 sm:space-y-7">
                             <div>
-                                <label for="name" class="text-base font-medium text-slate-700 mb-2 block">Full
+                                <label for="name"
+                                    class="text-sm sm:text-base font-medium text-slate-700 mb-1 sm:mb-2 block">Full
                                     Name</label>
                                 <input type="text" id="name" name="name"
-                                    class="mt-1 block w-full border border-slate-300 rounded-lg shadow-sm py-3 px-4 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 placeholder-slate-400"
+                                    class="mt-1 block w-full border border-slate-300 rounded-lg shadow-sm py-2.5 px-3.5 text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 placeholder-slate-400"
                                     placeholder="John Doe" />
                             </div>
                             <div>
-                                <label for="email" class="text-base font-medium text-slate-700 mb-2 block">Email
+                                <label for="email"
+                                    class="text-sm sm:text-base font-medium text-slate-700 mb-1 sm:mb-2 block">Email
                                     Address</label>
                                 <input type="email" id="email" name="email"
-                                    class="mt-1 block w-full border border-slate-300 rounded-lg shadow-sm py-3 px-4 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 placeholder-slate-400"
+                                    class="mt-1 block w-full border border-slate-300 rounded-lg shadow-sm py-2.5 px-3.5 text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 placeholder-slate-400"
                                     placeholder="john.doe@example.com" />
                             </div>
                             <div>
                                 <label for="message"
-                                    class="text-base font-medium text-slate-700 mb-2 block">Message</label>
+                                    class="text-sm sm:text-base font-medium text-slate-700 mb-1 sm:mb-2 block">Message</label>
                                 <textarea id="message" name="message" rows="5"
-                                    class="mt-1 block w-full border border-slate-300 rounded-lg shadow-sm py-3 px-4 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 placeholder-slate-400"
+                                    class="mt-1 block w-full border border-slate-300 rounded-lg shadow-sm py-2.5 px-3.5 text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 placeholder-slate-400"
                                     placeholder="Tell us about your cybersecurity needs..."></textarea>
                             </div>
                             <div>
                                 <button type="submit"
-                                    class="w-full bg-blue-700 text-white py-3.5 px-8 rounded-lg font-semibold text-lg hover:bg-blue-800 transition-all duration-300 shadow-md hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300">Send
+                                    class="w-full bg-blue-700 text-white py-3 sm:py-3.5 px-6 sm:px-8 rounded-lg font-semibold text-base sm:text-lg hover:bg-blue-800 transition-all duration-300 shadow-md hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300">Send
                                     Message</button>
                             </div>
                         </div>
                     </form>
-                    <div class="flex flex-col justify-center bg-gray-50 p-8 rounded-xl border border-gray-200">
-                        <h3 class="text-2xl font-semibold text-slate-800 mb-6">Contact Information</h3>
-                        <p class="mt-2 text-slate-600 text-lg mb-8">Prefer to reach out directly? We're here to help.
-                        </p>
-                        <div class="mt-6 space-y-6">
+                    <div class="flex flex-col justify-center bg-gray-50 p-6 sm:p-8 rounded-xl border border-gray-200">
+                        <h3 class="text-xl sm:text-2xl font-semibold text-slate-800 mb-5 sm:mb-6">Contact Information
+                        </h3>
+                        <p class="mt-2 text-slate-600 text-base sm:text-lg mb-6 sm:mb-8">Prefer to reach out directly?
+                            We're here to help.</p>
+                        <div class="mt-4 sm:mt-6 space-y-5 sm:space-y-6">
                             <div class="flex items-center">
-                                <span class="text-blue-600 text-3xl mr-4 flex-shrink-0">✉️</span>
+                                <span class="text-blue-600 text-2xl sm:text-3xl mr-3 sm:mr-4 flex-shrink-0">✉️</span>
                                 <div>
-                                    <h4 class="font-semibold text-slate-700 text-lg">Email Us</h4>
+                                    <h4 class="font-semibold text-slate-700 text-base sm:text-lg">Email Us</h4>
                                     <a href="mailto:contact@cybrgen.nz"
-                                        class="text-blue-700 hover:underline text-base">contact@cybrgen.nz</a>
+                                        class="text-blue-700 hover:underline text-sm sm:text-base">contact@cybrgen.nz</a>
                                 </div>
                             </div>
                             <div class="flex items-center">
-                                <span class="text-blue-600 text-3xl mr-4 flex-shrink-0">📞</span>
+                                <span class="text-blue-600 text-2xl sm:text-3xl mr-3 sm:mr-4 flex-shrink-0">📞</span>
                                 <div>
-                                    <h4 class="font-semibold text-slate-700 text-lg">Call Us</h4>
-                                    <span class="text-slate-700 text-base">(+64) 123 456 789</span>
+                                    <h4 class="font-semibold text-slate-700 text-base sm:text-lg">Call Us</h4>
+                                    <span class="text-slate-700 text-sm sm:text-base">(+64) 123 456 789</span>
                                 </div>
                             </div>
                             <div class="flex items-center">
-                                <span class="text-blue-600 text-3xl mr-4 flex-shrink-0">📍</span>
+                                <span class="text-blue-600 text-2xl sm:text-3xl mr-3 sm:mr-4 flex-shrink-0">📍</span>
                                 <div>
-                                    <h4 class="font-semibold text-slate-700 text-lg">Our Location</h4>
-                                    <span class="text-slate-700 text-base">Auckland, New Zealand</span>
+                                    <h4 class="font-semibold text-slate-700 text-base sm:text-lg">Our Location</h4>
+                                    <span class="text-slate-700 text-sm sm:text-base">Auckland, New Zealand</span>
                                 </div>
                             </div>
                         </div>
@@ -871,10 +872,10 @@
         </section>
     </main>
 
-    <footer class="bg-slate-900 text-slate-400 py-10">
+    <footer class="bg-slate-900 text-slate-400 py-8">
         <div class="container mx-auto px-6 text-center">
             <p class="text-sm md:text-base">&copy; 2024 CYBRGEN. All Rights Reserved. </p>
-            <div class="mt-5 space-x-6 text-sm md:text-base">
+            <div class="mt-4 space-x-4 text-sm md:text-base">
                 <a href="#" class="hover:text-white transition-colors duration-200">Privacy Policy</a>
                 <span class="text-slate-600">|</span>
                 <a href="#" class="hover:text-white transition-colors duration-200">Terms of Service</a>
@@ -886,9 +887,9 @@
     <div id="resource-modal-overlay" class="modal-overlay">
         <div id="resource-modal-content" class="modal-content">
             <div id="modal-body-content"></div>
-            <div class="p-8 pt-0 flex justify-end">
+            <div class="p-6 pt-0 flex justify-end">
                 <button id="modal-close-button"
-                    class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 shadow-md hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300">Close</button>
+                    class="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 shadow-md hover:scale-[1.02] active:scale-95 focus:outline-none focus:ring-4 focus:ring-blue-300">Close</button>
             </div>
         </div>
     </div>
@@ -989,7 +990,7 @@
                 {
                     id: 'assessment-testing',
                     title: 'Security Assessment & Testing Services',
-                    icon: '🎯',
+                    icon: '�',
                     description: 'Simulate real-world attacks and perform comprehensive reviews to identify and exploit vulnerabilities before malicious actors can.',
                     services: [
                         {
@@ -1349,10 +1350,10 @@
                     title: 'Securing a Major NZ Retailer for PCI DSS Compliance',
                     excerpt: 'Discover how we helped a multi-location retailer achieve and maintain PCI DSS compliance, securing customer data and preventing costly fines.',
                     content: `
-                        <div class="p-8">
-                            <h3 class="text-2xl font-bold mb-2 text-slate-800">Case Study: Securing a Major NZ Retailer</h3>
-                            <p class="text-sm text-slate-500 mb-6">Topic: Compliance & Governance</p>
-                            <div class="space-y-4 text-slate-600">
+                        <div class="p-6 sm:p-8">
+                            <h3 class="text-xl sm:text-2xl font-bold mb-2 text-slate-800">Case Study: Securing a Major NZ Retailer</h3>
+                            <p class="text-xs sm:text-sm text-slate-500 mb-5 sm:mb-6">Topic: Compliance & Governance</p>
+                            <div class="space-y-3 sm:space-y-4 text-slate-600 text-sm sm:text-base">
                                 <p><strong>The Challenge:</strong> A prominent New Zealand retailer with multiple stores was facing an upcoming PCI DSS audit. Their existing infrastructure had grown organically over years, leading to inconsistent security controls and significant compliance gaps. They needed an expert partner to assess their environment and guide them to full compliance without disrupting business operations.</p>
                                 <p><strong>Our Solution:</strong> Our consulting team performed a comprehensive gap analysis, identifying critical vulnerabilities in their payment processing systems and network segmentation. We developed a phased remediation roadmap, prioritizing the most urgent risks. This involved re-architecting parts of their network, implementing stronger access controls, and deploying a managed vulnerability scanning service.</p>
                                 <p><strong>The Outcome:</strong> The client successfully passed their PCI DSS audit on the first attempt, avoiding potential fines and reputational damage. They now have a sustainable security program, supported by our ongoing managed services, ensuring they remain compliant and secure against future threats.</p>
@@ -1365,10 +1366,10 @@
                     title: 'The Rise of AI-Powered Phishing Attacks',
                     excerpt: 'Artificial intelligence is making phishing scams more sophisticated than ever. Learn how to spot these advanced threats and protect your organization.',
                     content: `
-                        <div class="p-8">
-                            <h3 class="text-2xl font-bold mb-2 text-slate-800">Blog: The Rise of AI-Powered Phishing</h3>
-                            <p class="text-sm text-slate-500 mb-6">Topic: Threat Intelligence</p>
-                            <div class="space-y-4 text-slate-600">
+                        <div class="p-6 sm:p-8">
+                            <h3 class="text-xl sm:text-2xl font-bold mb-2 text-slate-800">Blog: The Rise of AI-Powered Phishing</h3>
+                            <p class="text-xs sm:text-sm text-slate-500 mb-5 sm:mb-6">Topic: Threat Intelligence</p>
+                            <div class="space-y-3 sm:space-y-4 text-slate-600 text-sm sm:text-base">
                                 <p>Gone are the days of phishing emails filled with obvious spelling and grammar mistakes. Cybercriminals are now leveraging AI language models to craft highly convincing, personalized, and context-aware phishing messages. These attacks are harder to detect and can easily bypass traditional email filters.</p>
                                 <p><strong>What makes them so dangerous?</strong> AI can analyze publicly available information to tailor emails to specific individuals, referencing recent projects, colleagues, or events to build credibility. The language is flawless, and the tone perfectly mimics legitimate business communication.</p>
                                 <p><strong>How to Defend:</strong> A multi-layered approach is crucial. This includes advanced email security solutions that analyze for intent, not just keywords. Most importantly, continuous security awareness training is vital. Employees must be trained to be skeptical of any unexpected request, especially those involving financial transactions or sensitive data, regardless of how convincing the email appears.</p>
@@ -1381,10 +1382,10 @@
                     title: 'A Pragmatic Guide to Zero Trust Architecture',
                     excerpt: 'Moving beyond the buzzword. Our guide provides a step-by-step approach to implementing a Zero Trust security model in your organization.',
                     content: `
-                        <div class="p-8">
-                            <h3 class="2xl font-bold mb-2 text-slate-800">Whitepaper: A Pragmatic Guide to Zero Trust</h3>
-                            <p class="text-sm text-slate-500 mb-6">Topic: Security Strategy</p>
-                            <div class="space-y-4 text-slate-600">
+                        <div class="p-6 sm:p-8">
+                            <h3 class="text-xl sm:text-2xl font-bold mb-2 text-slate-800">Whitepaper: A Pragmatic Guide to Zero Trust</h3>
+                            <p class="text-xs sm:text-sm text-slate-500 mb-5 sm:mb-6">Topic: Security Strategy</p>
+                            <div class="space-y-3 sm:space-y-4 text-slate-600 text-sm sm:text-base">
                                 <p>Zero Trust is a security model that shifts defenses from static, network-based perimeters to focus on users, assets, and resources. It operates on the principle of "never trust, always verify." This guide breaks down the core pillars of a Zero Trust architecture:</p>
                                 <ul>
                                     <li><strong>Identity:</strong> Implementing strong authentication and access controls.</li>
@@ -1491,28 +1492,28 @@
                     const categoryCardHtml = `
                         <div class="group border border-gray-200 rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-[1.01] bg-white">
                             <div
-                                class="category-card p-8 pb-4 cursor-pointer flex flex-col justify-between h-full hover:bg-gray-50 transition-colors"
+                                class="category-card p-6 sm:p-8 pb-4 cursor-pointer flex flex-col justify-between h-full hover:bg-gray-50 transition-colors"
                                 data-category-id="${category.id}"
                             >
                                 <div>
-                                    <div class="text-6xl mb-6 text-blue-600">${category.icon}</div>
-                                    <h3 class="text-2xl font-bold text-slate-800 mb-3">${category.title}</h3>
-                                    <p class="text-slate-600 text-base leading-relaxed">${category.description}</p>
+                                    <div class="text-5xl sm:text-6xl mb-5 sm:mb-6 text-blue-600">${category.icon}</div>
+                                    <h3 class="text-xl sm:text-2xl font-bold text-slate-800 mb-2 sm:mb-3">${category.title}</h3>
+                                    <p class="text-sm sm:text-base text-slate-600 leading-relaxed">${category.description}</p>
                                 </div>
-                                <div class="mt-6 text-blue-700 group-hover:text-blue-800 font-semibold flex items-center justify-end">
+                                <div class="mt-5 sm:mt-6 text-blue-700 group-hover:text-blue-800 font-semibold flex items-center justify-end">
                                     <span class="expand-indicator transition-transform duration-300 transform">Show Details &rarr;</span>
                                 </div>
                             </div>
                             <div class="category-details bg-gray-50 rounded-b-2xl -mt-2 shadow-inner" id="category-detail-${category.id}">
-                                <div class="space-y-4 pt-4"> <!-- Added pt-4 for padding inside details -->
+                                <div class="space-y-3 sm:space-y-4 pt-3 sm:pt-4"> <!-- Added pt-4 for padding inside details -->
                                     ${category.services.map(service => `
                                         <div class="service-item border-b border-gray-100 last:border-b-0">
-                                            <div class="service-item-header flex justify-between items-center py-4 px-6 cursor-pointer bg-white hover:bg-gray-100 rounded-lg transition-colors" data-service-item-id="${category.id}-${service.title.replace(/[^a-zA-Z0-9-]/g, '').replace(/\s+/g, '-').toLowerCase()}">
-                                                <h4 class="font-semibold text-slate-700 text-lg">${service.title}</h4>
-                                                <span class="text-blue-600 text-xl transform transition-transform duration-300">›</span>
+                                            <div class="service-item-header flex justify-between items-center py-3 sm:py-4 px-4 sm:px-6 cursor-pointer bg-white hover:bg-gray-100 rounded-lg transition-colors" data-service-item-id="${category.id}-${service.title.replace(/[^a-zA-Z0-9-]/g, '').replace(/\s+/g, '-').toLowerCase()}">
+                                                <h4 class="font-semibold text-base sm:text-lg text-slate-700">${service.title}</h4>
+                                                <span class="text-blue-600 text-lg sm:text-xl transform transition-transform duration-300">›</span>
                                             </div>
                                             <div class="service-item-details bg-gray-50" id="service-item-detail-${category.id}-${service.title.replace(/[^a-zA-Z0-9-]/g, '').replace(/\s+/g, '-').toLowerCase()}">
-                                                <ul class="list-disc list-inside space-y-2 text-slate-600 text-sm pl-8 pr-4 py-4">
+                                                <ul class="list-disc list-inside space-y-1 sm:space-y-2 text-slate-600 text-xs sm:text-sm pl-6 sm:pl-8 pr-3 sm:pr-4 py-3 sm:py-4">
                                                     ${service.details.map(detail => `<li>${detail}</li>`).join('')}
                                                 </ul>
                                             </div>
@@ -1604,17 +1605,17 @@
                 resourcesData.forEach(resource => {
                     const resourceCardHtml = `
                         <div class="bg-gray-50 rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl hover:scale-[1.01] border border-gray-100">
-                            <div class="p-6 flex-grow">
-                                <p class="text-sm font-semibold text-blue-600 mb-1 tracking-wider uppercase">${resource.type}</p>
-                                <h3 class="text-xl font-bold text-slate-800 mb-3">${resource.title}</h3>
-                                <p class="text-slate-600 text-base leading-relaxed">${resource.excerpt}</p>
+                            <div class="p-4 sm:p-6 flex-grow">
+                                <p class="text-xs sm:text-sm font-semibold text-blue-600 mb-1 tracking-wider uppercase">${resource.type}</p>
+                                <h3 class="text-base sm:text-lg font-bold text-slate-800 mb-2">${resource.title}</h3>
+                                <p class="text-sm text-slate-600 leading-relaxed">${resource.excerpt}</p>
                             </div>
-                            <div class="p-6 bg-gray-100">
+                            <div class="p-4 sm:p-6 bg-gray-100">
                                 <button
-                                    class="read-more-button font-semibold text-blue-700 hover:text-blue-800 flex items-center gap-2 transition-colors duration-200"
+                                    class="read-more-button font-semibold text-blue-700 hover:text-blue-800 flex items-center gap-1 sm:gap-2 transition-colors duration-200"
                                     data-content='${encodeURIComponent(resource.content)}'
                                 >
-                                    Read More <span class="text-xl">&rarr;</span>
+                                    Read More <span class="text-lg sm:text-xl">&rarr;</span>
                                 </button>
                             </div>
                         </div>
