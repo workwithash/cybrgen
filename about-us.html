@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYBRGEN: About Us</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font: DM Sans (Google Fonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #f8fafc;
+            /* Light, almost white background (slate-50) */
+            color: #1e293b;
+            /* Dark text for readability (slate-800) */
+            overflow-x: hidden;
+            /* Prevent horizontal scrolling */
+        }
+
+        .container {
+            max-width: 1300px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding-left: 3rem;
+                padding-right: 3rem;
+            }
+        }
+
+        /* Custom scrollbar for aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            /* Light gray track */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            /* Gray thumb */
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+            /* Darker gray on hover */
+        }
+
+        /* Card background for bento grids with light blue/grey gradient */
+        .bento-card-bg {
+            background-image: linear-gradient(145deg, #ffffff, #f0f8ff);
+            /* White to very light blue gradient */
+            background-size: 200% 200%;
+            /* Make background larger than element for shifting */
+            background-position: 0% 0%;
+            /* Initial position of the gradient */
+            transition: background-position 0.5s ease-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            /* Add transition for background-position */
+        }
+
+        .bento-card-bg:hover {
+            background-position: 100% 100%;
+            /* Shift gradient on hover */
+        }
+
+        /* Hero section specific gradients */
+        .hero-section-gradient {
+            background: linear-gradient(135deg, #f0f8ff 0%, #ffffff 100%);
+            /* Very light blue to white */
+        }
+
+        /* Animation classes for scroll reveal */
+        .animate-in-view {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .animate-in-view.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Delay classes for staggered animations */
+        .delay-100 {
+            transition-delay: 0.1s;
+        }
+
+        .delay-200 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-300 {
+            transition-delay: 0.3s;
+        }
+
+        .delay-400 {
+            transition-delay: 0.4s;
+        }
+
+        .delay-500 {
+            transition-delay: 0.5s;
+        }
+
+        .delay-600 {
+            transition-delay: 0.6s;
+        }
+
+        .delay-700 {
+            transition-delay: 0.7s;
+        }
+
+        .delay-800 {
+            transition-delay: 0.8s;
+        }
+
+
+        /* Hover subtle shadow and lift for interactive elements */
+        .interactive-element:hover {
+            transform: translateY(-3px);
+            /* Subtle lift */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            /* Enhanced shadow */
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Hamburger menu specific styles */
+        .hamburger-line {
+            width: 28px;
+            height: 3px;
+            background-color: #334155;
+            /* slate-700 */
+            display: block;
+            margin: 6px auto;
+            transition: all 0.3s ease-in-out;
+            border-radius: 2px;
+        }
+
+        .hamburger.is-active .hamburger-line:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger.is-active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.is-active .hamburger-line:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* Mobile navigation menu slide-in */
+        #mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        #mobile-menu.is-active {
+            transform: translateX(0);
+        }
+
+        /* Custom loader for AI advisor */
+        .loader {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #2563eb;
+            /* Primary blue for loader */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-slate-800">
+
+    <!-- Navigation Bar -->
+    <header class="bg-white bg-opacity-90 backdrop-blur-sm shadow-sm sticky top-0 z-50 py-4">
+        <nav class="container mx-auto px-6 flex justify-between items-center">
+            <!-- Logo with elegant typography -->
+            <a href="index.html"
+                class="text-4xl font-extrabold text-blue-600 tracking-wider hover:text-blue-700 transition-colors duration-300">CYBRGEN<span
+                    class="text-teal-500">.</span></a>
+
+            <!-- Desktop Navigation -->
+            <ul class="hidden md:flex space-x-10">
+                <li><a href="index.html#impact"
+                        class="text-lg font-medium text-slate-700 hover:text-blue-600 transition-colors duration-300 relative group">Impact<span
+                            class="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span></a>
+                </li>
+                <li><a href="index.html#services"
+                        class="text-lg font-medium text-slate-700 hover:text-blue-600 transition-colors duration-300 relative group">Services<span
+                            class="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span></a>
+                </li>
+                <li><a href="index.html#solutions"
+                        class="text-lg font-medium text-slate-700 hover:text-blue-600 transition-colors duration-300 relative group">Solutions<span
+                            class="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span></a>
+                </li>
+                <li><a href="index.html#testimonials"
+                        class="text-lg font-medium text-slate-700 hover:text-blue-600 transition-colors duration-300 relative group">Testimonials<span
+                            class="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span></a>
+                </li>
+                <li><a href="about-us.html"
+                        class="text-lg font-medium text-slate-700 hover:text-blue-600 transition-colors duration-300 relative group">About
+                        Us<span
+                            class="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span></a>
+                </li>
+                <li><a href="index.html#advisor"
+                        class="text-lg font-medium text-slate-700 hover:text-blue-600 transition-colors duration-300 relative group">AI
+                        Advisor<span
+                            class="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span></a>
+                </li>
+                <li><a href="index.html#contact"
+                        class="text-lg font-medium text-slate-700 hover:text-blue-600 transition-colors duration-300 relative group">Contact<span
+                            class="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span></a>
+                </li>
+            </ul>
+
+            <!-- Mobile Hamburger Menu -->
+            <div class="md:hidden">
+                <button id="hamburger-menu" class="hamburger text-slate-700 focus:outline-none p-2 rounded-md">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu"
+            class="md:hidden fixed inset-0 w-full h-full bg-white bg-opacity-95 z-40 flex flex-col items-center justify-center space-y-8">
+            <button id="close-mobile-menu" class="absolute top-6 right-6 text-slate-700 text-3xl focus:outline-none">
+                <i class="fas fa-times"></i>
+            </button>
+            <ul class="text-center">
+                <li><a href="index.html#impact"
+                        class="block text-3xl font-semibold text-slate-700 hover:text-blue-600 py-4 transition-colors duration-300 mobile-nav-link">Impact</a>
+                </li>
+                <li><a href="index.html#services"
+                        class="block text-3xl font-semibold text-slate-700 hover:text-blue-600 py-4 transition-colors duration-300 mobile-nav-link">Services</a>
+                </li>
+                <li><a href="index.html#solutions"
+                        class="block text-3xl font-semibold text-slate-700 hover:text-blue-600 py-4 transition-colors duration-300 mobile-nav-link">Solutions</a>
+                </li>
+                <li><a href="index.html#testimonials"
+                        class="block text-3xl font-semibold text-slate-700 hover:text-blue-600 py-4 transition-colors duration-300 mobile-nav-link">Testimonials</a>
+                </li>
+                <li><a href="about-us.html"
+                        class="block text-3xl font-semibold text-slate-700 hover:text-blue-600 py-4 transition-colors duration-300 mobile-nav-link">About
+                        Us</a></li>
+                <li><a href="index.html#advisor"
+                        class="block text-3xl font-semibold text-slate-700 hover:text-blue-600 py-4 transition-colors duration-300 mobile-nav-link">AI
+                        Advisor</a></li>
+                <li><a href="index.html#contact"
+                        class="block text-3xl font-semibold text-slate-700 hover:text-blue-600 py-4 transition-colors duration-300 mobile-nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- About Us Content Section -->
+    <section class="py-20 md:py-32 bg-gray-100">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-16 animate-in-view">
+                About CYBRGEN: Leading with Expertise & Innovation
+            </h1>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-left animate-in-view delay-100">
+                    <p class="text-lg text-slate-600 leading-relaxed mb-6">
+                        At CYBRGEN, we believe that robust cybersecurity is the cornerstone of modern business
+                        resilience. Founded by a collective of seasoned ethical hackers and security strategists,
+                        our mission is to deliver unparalleled digital defense capabilities. We combine decades of
+                        front-line experience with continuous innovation to safeguard your most critical assets.
+                    </p>
+                    <p class="text-lg text-slate-600 leading-relaxed">
+                        Our commitment is to provide proactive, adaptive, and human-centric security solutions.
+                        We empower organizations to not just withstand threats, but to thrive securely in an
+                        increasingly interconnected world. Your trust is our greatest asset.
+                    </p>
+                    <p class="text-lg text-slate-600 leading-relaxed mt-6">
+                        We are passionate about staying ahead of emerging threats, constantly evolving our strategies
+                        and technologies to offer you the most comprehensive protection. Our team of experts works
+                        tirelessly to ensure your digital landscape remains secure, allowing you to focus on your core
+                        business.
+                    </p>
+                </div>
+                <div class="animate-in-view delay-200">
+                    <img src="https://placehold.co/600x400/f1f5f9/64748b?text=Our+Global+Team" alt="CYBRGEN Team"
+                        class="rounded-xl shadow-2xl border border-gray-200 w-full interactive-element">
+                </div>
+            </div>
+            <div class="mt-20 text-center animate-in-view delay-300">
+                <h3 class="text-3xl font-bold text-slate-900 mb-6">Our Core Values</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bento-card-bg p-6 rounded-2xl shadow-xl border border-gray-200 interactive-element">
+                        <div class="text-5xl text-blue-600 mb-4"><i class="fas fa-handshake"></i></div>
+                        <h4 class="text-xl font-bold text-slate-800 mb-2">Integrity</h4>
+                        <p class="text-slate-600 text-base">Operating with the highest ethical standards and
+                            transparency.</p>
+                    </div>
+                    <div class="bento-card-bg p-6 rounded-2xl shadow-xl border border-gray-200 interactive-element">
+                        <div class="text-5xl text-teal-600 mb-4"><i class="fas fa-lightbulb"></i></div>
+                        <h4 class="text-xl font-bold text-slate-800 mb-2">Innovation</h4>
+                        <p class="text-slate-600 text-base">Continuously developing cutting-edge solutions to stay ahead
+                            of threats.</p>
+                    </div>
+                    <div class="bento-card-bg p-6 rounded-2xl shadow-xl border border-gray-200 interactive-element">
+                        <div class="text-5xl text-purple-600 mb-4"><i class="fas fa-users"></i></div>
+                        <h4 class="text-xl font-bold text-slate-800 mb-2">Client-Centricity</h4>
+                        <p class="text-slate-600 text-base">Prioritizing your security needs and fostering strong
+                            partnerships.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 py-12">
+        <div class="container mx-auto text-center text-slate-400 animate-in-view">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <a href="index.html"
+                    class="text-3xl font-extrabold text-blue-400 tracking-wider mb-4 md:mb-0">CYBRGEN<span
+                        class="text-teal-400">.</span></a>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors duration-300 text-2xl"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors duration-300 text-2xl"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors duration-300 text-2xl"><i
+                            class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <p class="text-sm">&copy; 2025 CYBRGEN. All rights reserved. <span class="mx-2">|</span> Privacy Policy
+                <span class="mx-2">|</span> Terms of Service
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hamburger menu functionality for mobile navigation
+            const hamburgerButton = document.getElementById('hamburger-menu');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            // Open mobile menu
+            hamburgerButton.addEventListener('click', () => {
+                mobileMenu.classList.add('is-active');
+                hamburgerButton.classList.add('is-active');
+                document.body.style.overflowY = 'hidden'; // Prevent scrolling when menu is open
+            });
+
+            // Close mobile menu
+            closeMobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.remove('is-active');
+                hamburgerButton.classList.remove('is-active');
+                document.body.style.overflowY = 'auto'; // Restore scrolling
+            });
+
+            // Close mobile menu when a navigation link is clicked
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('is-active');
+                    hamburgerButton.classList.remove('is-active');
+                    document.body.style.overflowY = 'auto';
+                });
+            });
+
+            // Smooth scrolling for all anchor links (e.g., #services, #contact)
+            // Note: For links to different pages (like index.html#section), smooth scroll won't apply across pages.
+            // This script handles only in-page smooth scrolling.
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href.startsWith('#')) { // Only handle in-page anchors
+                        e.preventDefault();
+                        document.querySelector(href).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Scroll reveal animations using Intersection Observer API
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-in-view').forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+
+</html>
